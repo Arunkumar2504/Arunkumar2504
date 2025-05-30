@@ -62,3 +62,32 @@ num = int(input("Please enter the number you want to find: "))
 arr = list(map(int, input("Please enter the lists: ").split()))
 
 linearSearch(n=n, num=num, arr=arr)
+
+# Problem statement
+# Given an array of size N, find the sum of its elements.
+
+
+n = int(input())
+N = list(map(int, input().split()))
+total = sum(N)
+print(total)
+
+
+# Function to find the largest element
+def largestElement(arr, n):
+    max_element = arr[0]  # Assume the first element is the largest
+
+    for i in range(1, n):
+        if arr[i] > max_element:
+            max_element = arr[i]
+
+    return max_element
+
+
+# ---- Main code ----
+# Take input
+n = int(input())                       # First line: number of elements
+arr = list(map(int, input().split()))  # Second line: space-separated elements
+
+# Call the function and print the result
+print(largestElement(arr, n))
