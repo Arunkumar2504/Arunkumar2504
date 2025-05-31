@@ -91,3 +91,53 @@ arr = list(map(int, input().split()))  # Second line: space-separated elements
 
 # Call the function and print the result
 print(largestElement(arr, n))
+
+
+# Problem statement
+# You are given a string 'STR'. You have to convert the first alphabet of each word in a string to UPPER CASE.
+
+# For example:
+
+# If the given string 'STR' = ”I am a student of the third year” so you have to transform this string to ”I Am A Student Of The Third Year"
+# Note:
+
+# 'STR' will contains only space and alphabets both uppercase and lowercase. The words will be separated by space.
+
+
+def convertString(s):
+    words = s.split()
+    result_words = []
+    for w in words:
+        if len(w) > 0:
+            new_word = w[0].upper() + w[1:]
+            result_words.append(new_word)
+        else:
+            result_words.append(w)
+    return " ".join(result_words)
+
+# T = int(input().strip())
+# for _ in range(T):
+#     s = input().strip()
+#     print(convertString(s))
+
+
+# Problem statement
+# You are given two non-negative integers, ‘NUM1’ and ‘NUM2’, in the form of strings. Return the sum of both strings.
+
+
+# Note:
+# You do not need to print anything, it has already been taken care of. Just implement the given function.
+# Example:
+# Let ‘NUM1’ be: “5”
+# Let ‘NUM2’ be: “21”
+# The sum of both numbers will be: “26”.
+
+def stringSum(num1: str, num2: str) -> str:
+    # Write your code here.
+    Int_Change_one = int(num1)
+    Int_Change_two = int(num2)
+    sum_result = Int_Change_one + Int_Change_two
+    return str(sum_result)  # Convert the sum back to string and return it
+
+
+print(stringSum("123", "456"))
