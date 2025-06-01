@@ -141,3 +141,76 @@ def stringSum(num1: str, num2: str) -> str:
 
 
 print(stringSum("123", "456"))
+
+
+# Problem statement
+# You are given a singly linked list and an integer ‘K’. Your task is to search for the integer ‘K’ in the linked list. If it is present, return 1; otherwise, return 0.
+# Note:
+# The linked list is 0-indexed, meaning the first node is at index 0.
+# You do not need to print anything, it has already been taken care of. Just implement the given function.
+# Definition for singly-linked list.
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+def searchInLinkedList(head, k):
+    current = head
+    while current is not None:
+        if current.data == k:
+            return 1
+        current = current.next
+    return 0
+
+
+# Problem statement
+# Given a singly linked list of 'N' nodes. The objective is to determine the middle node of a singly linked list. However, if the list has an even number of nodes, we return the second middle node.
+
+# Note:
+# 1. If the list is empty, the function immediately returns None because there is no middle node to find.
+# 2. If the list has only one node, then the only node in the list is trivially the middle node, and the function returns that node.
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+def findMiddle(head):
+    if head is None:
+        return None
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    return slow
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+# Problem statement
+# You are given a Singly Linked List of integers. You need to reverse the Linked List by changing the links between nodes.
+
+# Note:
+# You do not need to print anything, just return the head of the reversed linked list.
+
+
+def reverseLinkedList(head):
+    prev = None
+    current = head
+
+    while current is not None:
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+
+    return prev
