@@ -214,3 +214,19 @@ def reverseLinkedList(head):
         current = next_node
 
     return prev
+
+
+# Problem statement
+# Ninja is learning the binary representation of the numbers. He wanted to practice the topic, so he picked a question. The problem statement says, two numbers, ‘A’ and ‘B’ are given. Find the number of bits of ‘B’ that should be flipped to convert it into ‘A’.Can you help Ninja to solve this problem?
+
+# You are given two integers, ‘A’ and ‘B’.Find the number of bits of ‘B’ that should be flipped to convert it into ‘A’.
+
+# For Example
+# If ‘A’ is 13(1101) and ‘B’ is 7(0111), The number of bits that should be flipped is 2(0111).
+
+def numberOfFlips(a: int, b: int) -> int:
+
+    # Write your code here.
+    xor_value = a ^ b
+
+    return bin(xor_value).count("1")
