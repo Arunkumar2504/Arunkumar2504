@@ -1,5 +1,7 @@
 #  Data structure Coding
 
+from sys import stdin
+import sys
 from math import *
 from collections import *
 from sys import *
@@ -441,3 +443,124 @@ def towerOfHanoi(n):
     solve(n, 1, 2, 3)
     return moves
 # ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Problem statement
+# Given an integer array 'ARR' of size 'N' and an integer 'K', return all the subsets of 'ARR' which sum to 'K'.
+
+# Subset of an array 'ARR' is a tuple that can be obtained from 'ARR' by removing some(possibly all) elements of 'ARR'.
+
+# Note:
+# The order of subsets is not important.
+
+# The order of elements in a particular subset should be in increasing order of the index.
+
+
+def findSubsetsThatSumToK(arr, n, k):
+    result = []
+
+    def backtrack(index, current_subset, current_sum):
+        if index == n:
+            if current_sum == k:
+                result.append(current_subset[:])
+            return
+
+        current_subset.append(arr[index])
+        backtrack(index + 1, current_subset, current_sum + arr[index])
+
+        current_subset.pop()
+        backtrack(index + 1, current_subset, current_sum)
+
+    backtrack(0, [], 0)
+    return result
+# ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Problem statement
+# You have given two positive integers N and K. Your task is to print a series of numbers i.e subtract K from N until it becomes 0 or negative then add K until it becomes N. You need to do this task without using any loop.
+
+# For Example:
+# For  N = 5, K = 2
+# Series = [5, 3, 1, -1, 1, 3, 5]
+
+def printSeries(n, k, original=None, decreasing=True):
+    if original is None:
+        original = n
+
+    # Base case: when we reach 0 or negative while decreasing
+    if decreasing and n <= 0:
+        # start increasing now
+        return [n] + printSeries(n + k, k, original, False)
+
+    # Base case: when we reach back to original while increasing
+    if not decreasing and n == original:
+        return [n]
+
+    if decreasing:
+        return [n] + printSeries(n - k, k, original, True)
+    else:
+        return [n] + printSeries(n + k, k, original, False)
+
+# ------------------------------------------------------------------------------------------------------------
+
+
+# Problem statement
+# You are given the first term(A), the common ratio(R) and an integer N. Your task is to find the Nth term of the GP series.
+
+# The general form of a GP(Geometric Progression) series is A, A(R), A(R ^ 2), A*(R ^ 3) and so on where A is the first term of GP series
+
+# Note:
+# As the answer can be large enough, return the answer modulo 10 ^ 9 + 7.
+
+
+MOD = 10**9 + 7
+
+# Fast modular exponentiation: r^(n-1) % MOD
+
+
+def power(r, exp):
+    result = 1
+    r = r % MOD
+    while exp > 0:
+        if exp % 2 == 1:
+            result = (result * r) % MOD
+        r = (r * r) % MOD
+        exp //= 2
+    return result
+
+
+def nthTermOfGP(n, a, r):
+    if a == 0:
+        return 0
+    if r == 0:
+        return 0 if n > 1 else a
+    return (a * power(r, n - 1)) % MOD
+
+
+t = int(sys.stdin.readline().strip())
+
+while (t > 0):
+
+    n, a, r = map(int, input().split())
+    print(nthTermOfGP(n, a, r))
+
+    t = t - 1
+# ------------------------------------------------------------------------------------------------------------
+
+# Problem statement
+# Aakash is a member of Ninja club. He has a weird family structure. Every male member(M) gives birth to a male child first and then a female child, whereas every female(F) member gives birth to a female child first and then to a male child. Aakash analyses this pattern and wants to know what will be the Kth child in his Nth generation. Can you help him?
+
+# A sample generation tree is shown, where ‘M’ denotes the male member and ‘F’ denotes the female member.
+
+
+def kthChildNthGeneration(n, k):
+    if n == 1:
+        return "Male"
+
+    parent = kthChildNthGeneration(n - 1, (k + 1) // 2)
+
+    if parent == "Male":
+        return "Male" if k % 2 == 1 else "Female"
+    else:
+        return "Female" if k % 2 == 1 else "Male"
+# ------------------------------------------------------------------------------------------------------------
