@@ -658,3 +658,67 @@ def isItSudoku(board):
 
     return solve(board)
 # ------------------------------------------------------------------------------------------------------------
+
+
+# Problem statement
+# Given a source point(sx, sy) and a destination point(dx, dy), the task is to check if it is possible to reach the destination point using the following valid moves:
+
+# (a, b) -> (a + b, b)
+# (a, b) -> (a, a + b)
+# Your task is to find if it is possible to reach the destination point using only the desired moves or not .
+
+# For example:
+# For the coordinates, source point = (1, 1) and destination point = (3, 5)
+# The output will be true as the destination point can be reached using the following sequence of moves:
+# (1, 1) -> (1, 2) -> (3, 2) -> (3, 5)
+
+def reachDestination(sx, sy, dx, dy):
+    while dx >= sx and dy >= sy:
+        if dx == sx and dy == sy:
+            return True
+        if dx > dy:
+            if dy == sy:
+                return (dx - sx) % dy == 0
+            dx %= dy
+        else:
+            if dx == sx:
+                return (dy - sy) % dx == 0
+            dy %= dx
+    return False
+
+
+# -------------------------------------------------------------------------------------------------------------------
+# Problem statement
+# You are given a 2-D matrix consisting of 0’s and 1’s with ‘N’ rows and ‘N’ columns, you are supposed to find all paths from the cell(0, 0)(top-left cell) to the cell(N-1, N-1)(bottom-right cell). All cells with value 0 are blocked and cannot be travelled through while all cells with value 1 are open.
+
+# If you are currently at cell (x, y) then you can move to (x+1,y)(denoted by ‘D’), (x-1,y)(denoted by ‘U’), (x,y+1)(denoted by ‘R’), (x,y-1)(denoted by ‘L’) in one move. You cannot move out of the grid.
+
+def isValid(arr, i, j, n, visited):
+    return 0 <= i < n and 0 <= j < n and arr[i][j] == 1 and visited[i][j] == 0
+
+
+def solve(arr, i, j, n, path, paths, visited, co_or):
+    if i == n - 1 and j == n - 1:
+        paths.append(path)
+        return
+
+    for dx, dy, move in co_or:
+        ni, nj = i + dx, j + dy
+        if isValid(arr, ni, nj, n, visited):
+            visited[ni][nj] = 1
+            solve(arr, ni, nj, n, path + move, paths, visited, co_or)
+            visited[ni][nj] = 0
+
+
+def findAllPaths(arr):
+    paths = []
+    n = len(arr)
+    visited = [[0 for _ in range(n)] for _ in range(n)]
+    co_or = [(1, 0, "D"), (0, -1, "L"), (0, 1, "R"), (-1, 0, "U")]
+
+    if arr[0][0] == 1:
+        visited[0][0] = 1
+        solve(arr, 0, 0, n, "", paths, visited, co_or)
+
+    return sorted(paths)
+# ------------------------------------------------------------------------------------------------------
