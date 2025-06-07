@@ -722,3 +722,51 @@ def findAllPaths(arr):
 
     return sorted(paths)
 # ------------------------------------------------------------------------------------------------------
+
+
+# Problem statement
+# The N Queens puzzle is the problem of placing N chess queens on an N * N chessboard such that no two queens attack each other.
+
+# Given an integer ‘N’, print all distinct solutions to the ‘N’ queen puzzle.
+
+# Two queens on the same chessboard can attack each other if any of the below condition satisfies:
+# 1. They share a row.
+# 2. They share a column.
+# 3. They share a diagonal.
+
+def isSafe(row, col, board, n):
+    for i in range(row):
+        if board[i][col] == 'Q':
+            return False
+    i, j = row - 1, col - 1
+    while i >= 0 and j >= 0:
+        if board[i][j] == 'Q':
+            return False
+        i -= 1
+        j -= 1
+    i, j = row - 1, col + 1
+    while i >= 0 and j < n:
+        if board[i][j] == 'Q':
+            return False
+        i -= 1
+        j += 1
+    return True
+
+
+def solveNQueensUtil(n, row, board, result):
+    if row == n:
+        result.append([1 if cell == 'Q' else 0 for r in board for cell in r])
+        return
+    for col in range(n):
+        if isSafe(row, col, board, n):
+            board[row] = board[row][:col] + 'Q' + board[row][col+1:]
+            solveNQueensUtil(n, row + 1, board, result)
+            board[row] = board[row][:col] + '.' + board[row][col+1:]
+
+
+def nQueens(n):
+    result = []
+    board = ['.' * n for _ in range(n)]
+    solveNQueensUtil(n, 0, board, result)
+    return result
+# ------------------------------------------------------------------------------------------------------
