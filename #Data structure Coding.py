@@ -769,4 +769,34 @@ def nQueens(n):
     board = ['.' * n for _ in range(n)]
     solveNQueensUtil(n, 0, board, result)
     return result
+
+
+# ------------------------------------------------------------------------------------------------------
+# Problem statement
+# Given a string S containing digits from 2 to 9 inclusive. Your task is to find all possible letter combinations that the number could represent.
+
+# A mapping from Digits to Letters(just like in Nokia 1100) is shown below. Note that 1 does not map to any letter.
+
+def combinations(S):
+    if not S:
+        return []
+
+    mapping = {
+        '2': 'abc', '3': 'def', '4': 'ghi',
+        '5': 'jkl', '6': 'mno',
+        '7': 'pqrs', '8': 'tuv', '9': 'wxyz'
+    }
+
+    result = []
+
+    def backtrack(index, path):
+        if index == len(S):
+            result.append(path)
+            return
+        possible_letters = mapping[S[index]]
+        for letter in possible_letters:
+            backtrack(index + 1, path + letter)
+
+    backtrack(0, "")
+    return result
 # ------------------------------------------------------------------------------------------------------
