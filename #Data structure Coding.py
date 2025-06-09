@@ -1,5 +1,6 @@
 #  Data structure Coding
 
+from itertools import combinations
 from sys import stdin
 import sys
 from math import *
@@ -799,4 +800,31 @@ def combinations(S):
 
     backtrack(0, "")
     return result
+
+# ------------------------------------------------------------------------------------------------------
+# Problem statement
+# You are a coach of a group consisting of 'N' students. The ith student has a strength Arr[i]. For a Tug of War game, you want to divide students into two teams of equal size (If N is odd, then size of one team should be (N-1)/2 and size of other team should be (N+1)/2). You want a game that is fun, for this the absolute difference between the team’s strength should be as minimum as possible. A team's strength is the sum of the strengths of the students in the team.
+
+# Detailed explanation ( Input/output format, Notes, Images )
+# Constraints :
+# 1 <= T <= 10
+# 2 <= N <= 20
+# 0 < Arr[i] <= 10^5
+# Where T is the number of test cases, N is the number of students and Arr[i] is the strength of ith student.
+
+
+def tugOfWar(arr, n):
+
+    # write your code here
+    total = sum(arr)
+    Min_diff = float('inf')
+
+    sizes = [n//2] if n % 2 == 0 else [n//2, n//2+1]
+    for size in sizes:
+        for teams in combinations(arr, size):
+            team_sum = sum(teams)
+            other_sum_arr = total-team_sum
+            diff = abs(team_sum-other_sum_arr)
+            Min_diff = min(Min_diff, diff)
+    return Min_diff
 # ------------------------------------------------------------------------------------------------------
