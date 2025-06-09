@@ -1,5 +1,6 @@
 #  Data structure Coding
 
+import math
 from typing import List
 from itertools import combinations
 from sys import stdin
@@ -855,4 +856,72 @@ def reverseStack(stack):
     top = stack.pop()
     reverseStack(stack)
     insertAtBottom(stack, top)
+
+
 # ------------------------------------------------------------------------------------------------------
+input = sys.stdin.readline
+
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+def dist_sq(p1, p2):
+    return (p1.x - p2.x)**2 + (p1.y - p2.y)**2
+
+
+def closest_strip(strip, d):
+    min_d = d
+    strip.sort(key=lambda p: p.y)
+    for i in range(len(strip)):
+        # Only check next 6 points according to theory
+        for j in range(i+1, min(i+7, len(strip))):
+            if (strip[j].y - strip[i].y)**2 >= min_d:
+                break
+            min_d = min(min_d, dist_sq(strip[i], strip[j]))
+    return min_d
+
+
+def closest_util(points_sorted_x, points_sorted_y):
+    n = len(points_sorted_x)
+    if n <= 3:
+        # Brute force when small number of points
+        min_d = float('inf')
+        for i in range(n):
+            for j in range(i+1, n):
+                min_d = min(min_d, dist_sq(
+                    points_sorted_x[i], points_sorted_x[j]))
+        return min_d
+
+    mid = n // 2
+    mid_point = points_sorted_x[mid]
+
+    # Split points_sorted_y into left and right arrays based on mid_point.x
+    left_y = []
+    right_y = []
+    for p in points_sorted_y:
+        if p.x <= mid_point.x:
+            left_y.append(p)
+        else:
+            right_y.append(p)
+
+    dl = closest_util(points_sorted_x[:mid], left_y)
+    dr = closest_util(points_sorted_x[mid:], right_y)
+    d = min(dl, dr)
+
+    # Build strip array with points close to mid line within distance d
+    strip = []
+    for p in points_sorted_y:
+        if abs(p.x - mid_point.x) ** 2 < d:
+            strip.append(p)
+
+    # Find minimum distance in strip and compare with d
+    return min(d, closest_strip(strip, d))
+
+
+def closest_pair(points):
+    points_sorted_x = sorted(points, key=lambda p: p.x)
+    points_sorted_y = sorted(points, key=lambda p: p.y)
+    return closest_util(points_sorted_x, points_sorted_y)
