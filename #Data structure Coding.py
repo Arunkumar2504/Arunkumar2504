@@ -859,69 +859,67 @@ def reverseStack(stack):
 
 
 # ------------------------------------------------------------------------------------------------------
-input = sys.stdin.readline
+class point:
 
-
-class Point:
     def __init__(self, x, y):
+
         self.x = x
+
         self.y = y
 
 
-def dist_sq(p1, p2):
-    return (p1.x - p2.x)**2 + (p1.y - p2.y)**2
+def closestPair(cordinates, n):
+
+    arr = [(point.x, point.y) for point in cordinates]
+
+    # Sort based on X-coordinate
+
+    arr.sort(key=lambda x: x[0])
+
+    result = float('inf')
+
+    for i in range(1, n):
+
+        x1, y1 = arr[i - 1]
+
+        x2, y2 = arr[i]
+
+        result = min(result, (x2 - x1)**2 + (y2 - y1)**2)
+
+    # Sort based on Y-coordinate
+
+    arr.sort(key=lambda x: x[1])
+
+    for i in range(1, n):
+
+        x1, y1 = arr[i - 1]
+
+        x2, y2 = arr[i]
+
+        result = min(result, (x2 - x1)**2 + (y2 - y1)**2)
+
+    return result
+# ------------------------------------------------------------------------------------------------
+# Problem statement
+# You are given an input string 'S'. Your task is to find and return all possible permutations of the input string.
+
+# Note:
+# 1. The input string may contain the same characters, so there will also be the same permutations.
+
+# 2. The order of permutation does not matter.
 
 
-def closest_strip(strip, d):
-    min_d = d
-    strip.sort(key=lambda p: p.y)
-    for i in range(len(strip)):
-        # Only check next 6 points according to theory
-        for j in range(i+1, min(i+7, len(strip))):
-            if (strip[j].y - strip[i].y)**2 >= min_d:
-                break
-            min_d = min(min_d, dist_sq(strip[i], strip[j]))
-    return min_d
+def findPermutations(s):
+    def backtrack(path, remaining):
+        if not remaining:
+            permutations.append(path)
+            return
+        for i in range(len(remaining)):
+            next_path = path + remaining[i]
+            next_remaining = remaining[:i] + remaining[i+1:]
+            backtrack(next_path, next_remaining)
 
-
-def closest_util(points_sorted_x, points_sorted_y):
-    n = len(points_sorted_x)
-    if n <= 3:
-        # Brute force when small number of points
-        min_d = float('inf')
-        for i in range(n):
-            for j in range(i+1, n):
-                min_d = min(min_d, dist_sq(
-                    points_sorted_x[i], points_sorted_x[j]))
-        return min_d
-
-    mid = n // 2
-    mid_point = points_sorted_x[mid]
-
-    # Split points_sorted_y into left and right arrays based on mid_point.x
-    left_y = []
-    right_y = []
-    for p in points_sorted_y:
-        if p.x <= mid_point.x:
-            left_y.append(p)
-        else:
-            right_y.append(p)
-
-    dl = closest_util(points_sorted_x[:mid], left_y)
-    dr = closest_util(points_sorted_x[mid:], right_y)
-    d = min(dl, dr)
-
-    # Build strip array with points close to mid line within distance d
-    strip = []
-    for p in points_sorted_y:
-        if abs(p.x - mid_point.x) ** 2 < d:
-            strip.append(p)
-
-    # Find minimum distance in strip and compare with d
-    return min(d, closest_strip(strip, d))
-
-
-def closest_pair(points):
-    points_sorted_x = sorted(points, key=lambda p: p.x)
-    points_sorted_y = sorted(points, key=lambda p: p.y)
-    return closest_util(points_sorted_x, points_sorted_y)
+    permutations = []
+    backtrack("", s)
+    return permutations
+# ------------------------------------------------------------------------------------------------
