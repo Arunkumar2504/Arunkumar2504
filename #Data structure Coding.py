@@ -1,5 +1,6 @@
 #  Data structure Coding
 
+from copy import copy
 import math
 from typing import List
 from itertools import combinations
@@ -1042,4 +1043,36 @@ def subsequences(string):
 
     backtrack(0, "")
     return result
+
 # -------------------------------------------------------------------------------------------------
+
+
+# Problem statement
+# You are given an array 'ARR' of 'N' distinct positive integers. You are also given a non-negative integer 'B'.
+
+
+# Your task is to return all unique combinations in the array whose sum equals 'B'. A number can be chosen any number of times from the array 'ARR'.
+
+
+# Elements in each combination must be in non-decreasing order.
+
+
+def combSum(ARR, B):
+    ARR.sort()  # Ensure non-decreasing order
+    result = []
+
+    def backtrack(start, target, path):
+        if target == 0:
+            result.append(copy(path))  # Copy the current path
+            return
+        for i in range(start, len(ARR)):
+            if ARR[i] > target:
+                break  # No point in continuing if number exceeds target
+            path.append(ARR[i])
+            # Not i+1 because we can reuse same element
+            backtrack(i, target - ARR[i], path)
+            path.pop()  # Backtrack
+
+    backtrack(0, B, [])
+    return result
+# --------------------------------------------------------------------------------------------------
