@@ -923,3 +923,24 @@ def findPermutations(s):
     backtrack("", s)
     return permutations
 # ------------------------------------------------------------------------------------------------
+
+
+# Problem statement
+# Given N pairs of parentheses, write a function to generate and print all combinations of well-formed parentheses. That is , you need to generate all possible valid sets of parentheses that can be formed with a given number of pairs.
+def printParenthesesHelper(cur, open_count, close_count, max_pairs):
+    if len(cur) == max_pairs * 2:
+        print(cur)
+        return
+
+    if open_count < max_pairs:
+        printParenthesesHelper(
+            cur + '{', open_count + 1, close_count, max_pairs)
+
+    if close_count < open_count:
+        printParenthesesHelper(cur + '}', open_count,
+                               close_count + 1, max_pairs)
+
+
+def printParantheses(n):
+    printParenthesesHelper("", 0, 0, n)
+# ------------------------------------------------------------------------------------------------
