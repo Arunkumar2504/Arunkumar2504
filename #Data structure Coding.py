@@ -1076,3 +1076,34 @@ def combSum(ARR, B):
     backtrack(0, B, [])
     return result
 # --------------------------------------------------------------------------------------------------
+
+
+# Problem statement
+# Ninja has been given a binary string ‘STR’ containing either ‘0’ or ‘1’. A binary string is called beautiful if it contains alternating 0s and 1s.
+
+# For Example: ‘0101’, ‘1010’, ‘101’, ‘010’ are beautiful strings.
+
+# He wants to make ‘STR’ beautiful by performing some operations on it. In one operation, Ninja can convert ‘0’ into ‘1’ or vice versa.
+
+# Your task is to determine the minimum number of operations Ninja should perform to make ‘STR’ beautiful.
+
+# For Example:
+# Minimum operations to make ‘STR’ ‘0010’ beautiful is ‘1’. In one operation, we can convert ‘0’ at index ‘0’ (0-based indexing) to ‘1’. The ‘STR’ now becomes ‘1010’ which is a beautiful string.
+
+def makeBeautiful(str):
+    # Write your code here
+    n = len(str)
+    count1 = 0
+    count2 = 0
+
+    for i in range(n):
+        expected1 = '0' if i % 2 == 0 else '1'
+        expected2 = '1' if i % 2 == 0 else '0'
+        if str[i] != expected1:
+            count1 += 1
+        if str[i] != expected2:
+            count2 += 1
+
+    return min(count1, count2)
+
+# --------------------------------------------------------------------------------------------------
