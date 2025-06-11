@@ -1107,3 +1107,39 @@ def makeBeautiful(str):
     return min(count1, count2)
 
 # --------------------------------------------------------------------------------------------------
+
+
+# Problem statement
+# Alice and Bob recently studied bitwise operators and were extremely fascinated by them. Alice found the following function in a book:
+
+# Function magic(P, Q):
+
+# while Q > 0:
+
+# A = P AND Q
+
+# B = P XOR Q
+
+# Q = A * 2
+
+# P = B
+
+# return P
+
+# Alice wondered how many times the while loop would run for any value of ‘P’ and ‘Q’. Alice gave Bob the binary representation of ‘P’ and ‘Q’ and asked him to help her count this.
+
+# Help Bob count the number of times the while loop would run for the given value of ‘P’ and ‘Q’.
+def countLoop(p: str, q: str) -> int:
+    # Write your code here.
+    P = int(p, 2)
+    Q = int(q, 2)
+    count = 0
+
+    while Q > 0:
+        A = P & Q
+        B = P ^ Q
+        Q = A << 1
+        P = B
+        count += 1
+    return count
+# ---------------------------------------------------------------------------------------------------
