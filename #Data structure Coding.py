@@ -1143,3 +1143,59 @@ def countLoop(p: str, q: str) -> int:
         count += 1
     return count
 # ---------------------------------------------------------------------------------------------------
+
+# Problem statement
+# You are given an array containing 'N' points in the plane. The task is to find out the distance of the closest points.
+
+# Note :
+# Where distance between two points (x1, y1) and (x2, y2) is calculated as [(x1 - x2) ^ 2] + [(y1 - y2) ^ 2].
+
+
+def closest_pair(points):
+    def dist(p1, p2):
+        return (p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2
+
+    def brute_force(pts):
+        min_d = float('inf')
+        for i in range(len(pts)):
+            for j in range(i + 1, len(pts)):
+                min_d = min(min_d, dist(pts[i], pts[j]))
+        return min_d
+
+    def strip_closest(strip, d):
+        min_d = d
+        strip.sort(key=lambda x: x[1])  # sort by y
+        for i in range(len(strip)):
+            j = i + 1
+            while j < len(strip) and (strip[j][1] - strip[i][1]) ** 2 < min_d:
+                min_d = min(min_d, dist(strip[i], strip[j]))
+                j += 1
+        return min_d
+
+    def closest_util(pts_sorted_x):
+        n = len(pts_sorted_x)
+        if n <= 3:
+            return brute_force(pts_sorted_x)
+
+        mid = n // 2
+        mid_x = pts_sorted_x[mid][0]
+
+        dl = closest_util(pts_sorted_x[:mid])
+        dr = closest_util(pts_sorted_x[mid:])
+        d = min(dl, dr)
+
+        # Create a strip[] that contains points close (closer than d)
+        strip = [p for p in pts_sorted_x if (p[0] - mid_x) ** 2 < d]
+
+        return min(d, strip_closest(strip, d))
+
+    points.sort()
+    return closest_util(points)
+
+
+if __name__ == "__main__":
+    n = int(input())
+    points = [tuple(map(int, input().split())) for _ in range(n)]
+    print(closest_pair(points))
+
+# -------------------------------------------------------------------------------------------------------------------
