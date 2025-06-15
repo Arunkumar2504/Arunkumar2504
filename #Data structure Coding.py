@@ -1151,7 +1151,7 @@ def countLoop(p: str, q: str) -> int:
 # Where distance between two points (x1, y1) and (x2, y2) is calculated as [(x1 - x2) ^ 2] + [(y1 - y2) ^ 2].
 
 
-def closest_pair(points):
+def closest_pair_sum(points):
     def dist(p1, p2):
         return (p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2
 
@@ -1196,6 +1196,6 @@ def closest_pair(points):
 if __name__ == "__main__":
     n = int(input())
     points = [tuple(map(int, input().split())) for _ in range(n)]
-    print(closest_pair(points))
+    print(closest_pair_sum(points))
 
 # -------------------------------------------------------------------------------------------------------------------
