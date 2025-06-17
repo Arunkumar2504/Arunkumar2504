@@ -1184,7 +1184,6 @@ def closest_pair_sum(points):
         dr = closest_util(pts_sorted_x[mid:])
         d = min(dl, dr)
 
-        # Create a strip[] that contains points close (closer than d)
         strip = [p for p in pts_sorted_x if (p[0] - mid_x) ** 2 < d]
 
         return min(d, strip_closest(strip, d))
