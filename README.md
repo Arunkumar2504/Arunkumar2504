@@ -107,7 +107,8 @@ This repository contains my older works and practice code in Python (Flask) and 
 - Add short descriptions to each file
 
   ---
-  3.SWE-Evaluation
+3. SWE-Evaluation
+
 This repository contains three Python scripts that automate tasks across Slack, JIRA, and Google Docs using simulated user activity.
 
 ✅ Task Overview
