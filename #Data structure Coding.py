@@ -1172,7 +1172,7 @@ def closest_pair_sum(points):
                 j += 1
         return min_d
 
-    def closest_util(pts_sorted_x):
+    def closest_utill(pts_sorted_x):
         n = len(pts_sorted_x)
         if n <= 3:
             return brute_force(pts_sorted_x)
@@ -1180,8 +1180,8 @@ def closest_pair_sum(points):
         mid = n // 2
         mid_x = pts_sorted_x[mid][0]
 
-        dl = closest_util(pts_sorted_x[:mid])
-        dr = closest_util(pts_sorted_x[mid:])
+        dl = closest_utill(pts_sorted_x[:mid])
+        dr = closest_utill(pts_sorted_x[mid:])
         d = min(dl, dr)
 
         strip = [p for p in pts_sorted_x if (p[0] - mid_x) ** 2 < d]
