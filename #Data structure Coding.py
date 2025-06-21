@@ -1109,7 +1109,7 @@ def makeBeautiful(str):
 # --------------------------------------------------------------------------------------------------
 
 
-# Problem statement
+# Problem statement alice and bob sum
 # Alice and Bob recently studied bitwise operators and were extremely fascinated by them. Alice found the following function in a book:
 
 # Function magic(P, Q):
@@ -1189,7 +1189,7 @@ def closest_pair_sum(points):
         return min(d, strip_closest(strip, d))
 
     points.sort()
-    return closest_util(points)
+    return closest_utill(points)
 
 
 if __name__ == "__main__":
