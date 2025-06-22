@@ -29,6 +29,7 @@ Django REST API for expenses is available (can be reused or expanded)
   Pagination and date filtering supported in backend logic
 
 🛠 Tech Stack
+
 Backend: Python, Django, Django REST Framework
 
   Frontend: HTML, Tailwind CSS, JavaScript
