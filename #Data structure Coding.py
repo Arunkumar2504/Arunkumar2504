@@ -1112,7 +1112,7 @@ def makeBeautiful(str):
 # Problem statement alice and bob sum
 # Alice and Bob recently studied bitwise operators and were extremely fascinated by them. Alice found the following function in a book:
 
-# Function magic(P, Q):
+# function magic(P, Q):
 
 # while Q > 0:
 
