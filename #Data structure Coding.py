@@ -1198,3 +1198,44 @@ if __name__ == "__main__":
     print(closest_pair_sum(points))
 
 # ---------------------------------------------------------------------------------------------------------------
+
+# Problem statement
+# You are given an array “ARR” of size N. Your task is to find out the sum of maximum and minimum elements in the array.
+
+# Follow Up:
+# Can you do the above task in a minimum number of comparisons?
+# Detailed explanation ( Input/output format, Notes, Images )
+# Constraints:
+# 1 <= T <= 10
+# 1 <= N <= 10^5
+# -10^9 <= ARR[i] <= 10^9
+
+# Time limit: 1 second
+
+
+def sumOfMaxMin(arr):
+    n = len(arr)
+    if n % 2 == 0:
+        if arr[0] < arr[1]:
+            mn = arr[0]
+            mx = arr[1]
+        else:
+            mn = arr[1]
+            mx = arr[0]
+        i = 2
+    else:
+        mn = mx = arr[0]
+        i = 1
+    while i < n-1:
+        if arr[i] < arr[i+1]:
+            small = arr[i]
+            large = arr[i+1]
+        else:
+            small = arr[i+1]
+            large = arr[i]
+        if small < mn:
+            mn = small
+        if large > mx:
+            mx = large
+        i += 2
+    return mn+mx
