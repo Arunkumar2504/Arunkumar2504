@@ -1210,7 +1210,6 @@ if __name__ == "__main__":
 # 1 <= N <= 10^5
 # -10^9 <= ARR[i] <= 10^9
 
-# Time limit: 1 second
 
 
 def sumOfMaxMin(arr):
