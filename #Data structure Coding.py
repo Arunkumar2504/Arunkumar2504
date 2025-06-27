@@ -1204,7 +1204,7 @@ if __name__ == "__main__":
 
 # Follow Up:
 # Can you do the above task in a minimum number of comparisons?
-# Detailed explanation ( Input/output format, Notes, Images )
+# Detailed explanation
 # Constraints:
 # 1 <= T <= 10
 # 1 <= N <= 10^5
