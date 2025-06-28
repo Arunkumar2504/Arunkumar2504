@@ -1091,7 +1091,7 @@ def combSum(ARR, B):
 # Minimum operations to make ‘STR’ ‘0010’ beautiful is ‘1’. In one operation, we can convert ‘0’ at index ‘0’ (0-based indexing) to ‘1’. The ‘STR’ now becomes ‘1010’ which is a beautiful string.
 
 def makeBeautiful(str):
-    # Write your code here
+
     n = len(str)
     count1 = 0
     count2 = 0
