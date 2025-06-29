@@ -1087,7 +1087,7 @@ def combSum(ARR, B):
 
 # Your task is to determine the minimum number of operations Ninja should perform to make ‘STR’ beautiful.
 
-# For Example:
+
 # Minimum operations to make ‘STR’ ‘0010’ beautiful is ‘1’. In one operation, we can convert ‘0’ at index ‘0’ (0-based indexing) to ‘1’. The ‘STR’ now becomes ‘1010’ which is a beautiful string.
 
 def makeBeautiful(str):
@@ -1209,7 +1209,6 @@ if __name__ == "__main__":
 # 1 <= T <= 10
 # 1 <= N <= 10^5
 # -10^9 <= ARR[i] <= 10^9
-
 
 
 def sumOfMaxMin(arr):
