@@ -1063,7 +1063,7 @@ def combSum(ARR, B):
 
     def backtrack(start, target, path):
         if target == 0:
-            result.append(copy(path))  # Copy the current path
+            result.append(copy(path))
             return
         for i in range(start, len(ARR)):
             if ARR[i] > target:
