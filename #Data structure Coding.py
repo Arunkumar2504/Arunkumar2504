@@ -1067,7 +1067,7 @@ def combSum(ARR, B):
             return
         for i in range(start, len(ARR)):
             if ARR[i] > target:
-                break  # No point in continuing if number exceeds target
+                break  
             path.append(ARR[i])
             # Not i+1 because we can reuse same element
             backtrack(i, target - ARR[i], path)
