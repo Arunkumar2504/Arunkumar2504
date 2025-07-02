@@ -1058,7 +1058,7 @@ def subsequences(string):
 
 
 def combSum(ARR, B):
-    ARR.sort()  # Ensure non-decreasing order
+    ARR.sort()  
     result = []
 
     def backtrack(start, target, path):
