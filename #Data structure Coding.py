@@ -1038,7 +1038,6 @@ def subsequences(string):
             return
         # Include current character
         backtrack(index + 1, path + string[index])
-        # Exclude current character
         backtrack(index + 1, path)
 
     backtrack(0, "")
