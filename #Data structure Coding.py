@@ -1057,7 +1057,7 @@ def subsequences(string):
 
 
 def combSum(ARR, B):
-    ARR.sort()  
+    ARR.sort()
     result = []
 
     def backtrack(start, target, path):
@@ -1066,7 +1066,7 @@ def combSum(ARR, B):
             return
         for i in range(start, len(ARR)):
             if ARR[i] > target:
-                break  
+                break
             path.append(ARR[i])
             # Not i+1 because we can reuse same element
             backtrack(i, target - ARR[i], path)
@@ -1237,4 +1237,20 @@ def sumOfMaxMin(arr):
         i += 2
     return mn+mx
 
+
 # ---------------------------------------------------------------------------------------------------------------
+arr = [1, 2, 3, 6, 5, 4, 7, 8]
+m = 3
+
+
+def Reverse_by_position(arr, m):
+    array_of_value = arr[:m+1]
+    for i in range(len(arr)):
+        if arr[i] == arr[m]:
+            rev = arr[:m:-1]
+            array_of_value.extend(rev)
+            break
+    return array_of_value
+
+
+print(Reverse_by_position(arr, m))
