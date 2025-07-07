@@ -1201,7 +1201,6 @@ if __name__ == "__main__":
 # Problem statement
 # You are given an array “ARR” of size N. Your task is to find out the sum of maximum and minimum elements in the array.
 
-# Follow Up:
 # Can you do the above task in a minimum number of comparisons?
 # Detailed explanation
 # Constraints:
