@@ -1146,7 +1146,6 @@ def countLoop(p: str, q: str) -> int:
 # Problem statement
 # You are given an array containing 'N' points in the plane. The task is to find out the distance of the closest points.
 
-# Note :
 # Where distance between two points (x1, y1) and (x2, y2) is calculated as [(x1 - x2) ^ 2] + [(y1 - y2) ^ 2].
 
 
