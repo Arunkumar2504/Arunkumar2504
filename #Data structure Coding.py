@@ -1082,7 +1082,6 @@ def combSum(ARR, B):
 
 # For Example: ‘0101’, ‘1010’, ‘101’, ‘010’ are beautiful strings.
 
-# He wants to make ‘STR’ beautiful by performing some operations on it. In one operation, Ninja can convert ‘0’ into ‘1’ or vice versa.
 
 # Your task is to determine the minimum number of operations Ninja should perform to make ‘STR’ beautiful.
 
