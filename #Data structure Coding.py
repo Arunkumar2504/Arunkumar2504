@@ -1282,8 +1282,6 @@ print(sumOrProduct(17, 2))
 # Problem statement
 # You are given two lists of integers, 'a' and 'b', each containing a
 # single integer. Your task is to swap the first element of list 'a' with the first element of list 'b' and return both lists after the swap.
-
-
 def swapNumber(a: list,  b: list) -> None:
     c = a[0]
     a[0] = b[0]
