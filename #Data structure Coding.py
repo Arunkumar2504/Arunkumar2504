@@ -332,7 +332,6 @@ def findRedundantBrackets(s: str):
 # 1 <= P <= 8
 # 1 <= X <= 10 ^ 5
 
-# Time Limit: 1 sec
 
 # Where ‘N’ represents the size of the deque, ‘Q’ represents the number of queries, ‘P’ represents the type of operation and ‘X’ represents the element.
 
