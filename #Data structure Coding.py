@@ -317,14 +317,6 @@ def findRedundantBrackets(s: str):
 # isFull(): Returns true if the deque is full, otherwise false.
 # Following types of queries denote these operations:
 
-# Type 1: for pushFront(X) operation.
-# Type 2: for pushRear(X) operation.
-# Type 3: for popFront() operation.
-# Type 4: for popRear() operation.
-# Type 5: for getFront() operation.
-# Type 6: for getRear() operation.
-# Type 7: for isEmpty() operation.
-# Type 8: for isFull() operation.
 # Detailed explanation(Input/output format, Notes, Images)
 # Constraints:
 # 1 <= N <= 1000
