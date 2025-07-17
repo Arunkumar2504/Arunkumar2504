@@ -1278,3 +1278,17 @@ def swapNumber(a: list,  b: list) -> None:
     b[0] = c
     return a, b
 # -----------------------------------------------------------------------------------------------------------------
+# Problem statement
+# You are given an array of integers, and you need to find the first duplicate number in the array. A duplicate number is a number that appears more than once in the array. If there are no duplicates, return -1.
+
+
+def findDuplicate(arr: list) -> int:
+    seen = set()
+    for num in arr:
+        if num in seen:
+            return num
+        seen.add(num)
+
+
+arr = [3, 1, 3, 4, 2]
+print(findDuplicate(arr))
