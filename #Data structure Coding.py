@@ -53,10 +53,6 @@ for i in range(len(Array)):
 
 
 # Example:
-# Input: ‘n’ = 5, ‘num’ = 4
-# 'arr' = [6, 7, 8, 4, 1]
-
-# Output: 3
 
 # Explanation:
 # 4 is present at the 3rd index.

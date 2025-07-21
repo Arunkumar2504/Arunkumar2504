@@ -1,12 +1,13 @@
-def findDuplicate(arr: list) -> int:
+
+def findUnique(arr, n):
+    # write your code here
     for i in range(len(arr)):
-        for j in range(i+1, len(arr)):
-            if arr[i] == arr[j]:
-                value = arr[i]
-                return value
+    
+        if arr[i] == i+1:
+            continue
+        elif i not in arr:
+            return i
+    return n
 
 
-arr = [3, 1, 3, 4, 2]
-print(findDuplicate(arr))
-
-# --------------------------------------------------------------------------------
+print(findUnique([0, 0, 1, 2, 3, 5, 1, 2, 3, 4, 5], 6))  # Output: 6
