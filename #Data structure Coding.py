@@ -100,7 +100,6 @@ def largestElement(arr, n):
     return max_element
 
 
-# ---- Main code ----
 # Take input
 n = int(input())                       # First line: number of elements
 arr = list(map(int, input().split()))  # Second line: space-separated elements
