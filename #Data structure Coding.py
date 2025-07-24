@@ -1362,3 +1362,9 @@ def findUnique(arr, n):
 # Hints:
 # 1. For an index ‘i’, find where it lands after k swaps.
 # 2. When performing rotation once observe how the positions of all elements change.
+def rotateArray(arr: list, k: int) -> list:
+    k = k % len(arr)
+    return arr[k:] + arr[:k]
+
+
+print(rotateArray([1, 2, 3, 4, 5], 2))  # Output: [4, 5, 1, 2, 3]
