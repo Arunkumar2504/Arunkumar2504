@@ -1,13 +1,6 @@
-
-def findUnique(arr, n):
-    # write your code here
-    for i in range(len(arr)):
-        for j in range(len(arr)):
-            if i == j:
-                break
-            continue
-
-    return i
+def rotateArray(arr: list, k: int) -> list:
+    k = k % len(arr)
+    return arr[-k:] + arr[:-k]
 
 
-print(findUnique([0, 0, 1, 2, 3, 5, 1, 2, 3, 4, 5], 6))
+print(rotateArray([1, 2, 3, 4, 5], 2))  # Output: [4, 5, 1, 2, 3]
