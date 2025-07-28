@@ -1367,7 +1367,7 @@ def rotateArray(arr: list, k: int) -> list:
     return arr[k:] + arr[:k]
 
 
-print(rotateArray([1, 2, 3, 4, 5], 2))  
+print(rotateArray([1, 2, 3, 4, 5], 2))
 # -------------------------------------------------------------------------------------------------------------------------------
 
 # Problem statement
@@ -1396,3 +1396,14 @@ def missingAndRepeating(arr, n):
 
 missingAndRepeating([5, 1, 2, 3, 4, 2], 6)
 # -------------------------------------------------------------------------------
+
+
+def largestElement(arr: [], n: int) -> int:
+    temp = 0
+    for i in range(n):
+        if arr[i] > temp:
+            temp = arr[i]
+    return temp
+
+
+print(largestElement([1, 2, 5, 4, 6, 2], 5))
