@@ -1407,3 +1407,22 @@ def largestElement(arr: [], n: int) -> int:
 
 
 print(largestElement([1, 2, 5, 4, 6, 2], 5))
+# ----------------------------------------------------------------------------------------------------------------
+
+# Problem statement
+# You are given an array of integers 'arr' of size 'n'. The task is to find two elements in the array that sum up to a given target value.
+# If such a pair exists, return the pair; otherwise, return [-1, -1].
+
+
+def twoSum(arr, target, n):
+    # Write your code here.
+    temp = 0
+    for i in range(len(arr)):
+        for j in range(i+1, len(arr)):
+            if arr[i]+arr[j] == target:
+                return [arr[i], arr[j]]
+    return [-1, -1]
+
+
+print(twoSum([1, 2, 3, 4, 5], 9, 5))  # Example usage
+# ----------------------------------------------------------------------------------------------------------------
