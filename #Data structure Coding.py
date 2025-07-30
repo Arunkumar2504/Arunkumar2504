@@ -1426,3 +1426,15 @@ def twoSum(arr, target, n):
 
 print(twoSum([1, 2, 3, 4, 5], 9, 5))  # Example usage
 # ----------------------------------------------------------------------------------------------------------------
+# Problem statement
+# You are given a number 'N'. Your task is to print the first 'N' Fibonacci numbers in a single line separated by spaces.
+
+
+def Fib(n):
+    a, b = 0, 1
+    for i in range(n):
+        print(a, end=" ")
+        a, b = b, a+b
+
+
+Fib(int(input()))
