@@ -147,7 +147,7 @@ Shares it between users
 User 2 adds a comment
 User 3 replies to the comment
 🧪 Technologies Used
-Python 3.10
+
 google-api-python-client for Google Docs/Drive
 slack_sdk for Slack bot interaction
 jira (Atlassian SDK) for JIRA integration
