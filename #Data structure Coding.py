@@ -1443,6 +1443,8 @@ Fib(int(input()))
 # Problem statement
 # You are given two integers 'a' and 'b'. Your task is to find the greatest common divisor (GCD) of these two numbers using the Euclidean algorithm.
 # The GCD of two numbers is the largest positive integer that divides both numbers without leaving a remainder.
+
+
 def GCD_of_number(a, b):
     while b:
         a, b = b, a % b
@@ -1450,3 +1452,4 @@ def GCD_of_number(a, b):
 
 
 print(GCD_of_number(36, 60))
+# -------------------------------------------------------------------------------------------------
