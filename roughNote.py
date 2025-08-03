@@ -1,8 +1,9 @@
-def Fib(n):
-    a, b = 0, 1
-    for i in range(n):
-        print(a, end=" ")
-        a, b = b, a+b
+import copy
 
+a = [[1, 2], [3, 4]]
+b = copy.copy(a)      # Shallow
+c = copy.deepcopy(a)  # Deep
 
-Fib(int(input()))
+a[0][0] = 99
+print(b)  # [[99, 2], [3, 4]] (affected)
+print(c)
