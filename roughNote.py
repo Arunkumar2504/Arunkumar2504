@@ -1,9 +1,10 @@
-import copy
+import threading
 
-a = [[1, 2], [3, 4]]
-b = copy.copy(a)      # Shallow
-c = copy.deepcopy(a)  # Deep
 
-a[0][0] = 99
-print(b)  # [[99, 2], [3, 4]] (affected)
-print(c)
+def task():
+    print("Running in thread")
+
+
+t = threading.Thread(target=task)
+t.start()
+t.join()
