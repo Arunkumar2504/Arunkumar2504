@@ -1,3 +1,4 @@
+
 #  Data structure Coding
 
 from copy import copy
@@ -1454,3 +1455,14 @@ print(GCD_of_number(36, 60))
 
 
 # -------------------------------------------------------------------------------------------------
+# Problem statement# You are given a string 'a'. Your task is to check if the string is a palindrome
+# A palindrome is a string that reads the same backward as forward.
+a = "malayalam"
+b = ""
+for i in range(len(a), 0, -1):
+    b = b + a[i-1]
+    # print(b, end='')
+if b == a:
+    print("yes")
+else:
+    print("no")
